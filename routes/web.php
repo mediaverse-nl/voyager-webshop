@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/{slug}', 'PagesController@show');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
