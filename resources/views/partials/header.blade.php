@@ -2,6 +2,23 @@
     <div id="flipkart-navbar">
         <div class="container">
             <div class="row row1 justify-content-end">
+                <ul class="largenav float-left" style="">
+
+                    @foreach($parentCategory as $parent)
+                        <li class="upper-links dropdown">
+                            <a class="links" href="#">{{$parent->name}}</a>
+                            <ul class="dropdown-menu">
+                                @foreach($parent->children as $child)
+                                    <li class="profile-li dropdown-item">
+                                        <a class="profile-links" href="{{route('category.show', [$child->id, $child->id])}}">{{$child->name}}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
+
+                </ul>
+
                 <ul class="largenav float-right" style="">
                     {{--<li class="upper-links">--}}
                         {{--<a class="links" href="">Link 1</a>--}}
@@ -9,7 +26,7 @@
                     @if (Route::has('login'))
                         @auth
                             <li class="upper-links dropdown">
-                                <a class="links" href="http://clashhacks.in/">Dropdown</a>
+                                <a class="links" href="http://clashhacks.in/">Account</a>
                                 <ul class="dropdown-menu">
                                     <li class="profile-li dropdown-item">
                                         <a class="profile-links" href="">Bestellingen</a>
@@ -18,7 +35,7 @@
                                         <a class="profile-links" href="">Wenslijst</a>
                                     </li>
                                     <li class="profile-li dropdown-item">
-                                        <a class="profile-links" href="">Account</a>
+                                        <a class="profile-links" href="">Profile</a>
                                     </li>
                                 </ul>
                             </li>
