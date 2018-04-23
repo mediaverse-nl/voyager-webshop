@@ -8,6 +8,8 @@ class Page extends Model
 {
     public static function findBySlug($slug)
     {
-        return static::where('slug', $slug)->firstOrFail();
+        return static::where('slug', $slug)
+            ->where('status', 'ACTIVE')
+            ->firstOrFail();
     }
 }

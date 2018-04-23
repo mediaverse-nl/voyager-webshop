@@ -1,0 +1,2 @@
+bezorgen & afhalen pagina
+{{$pages}}

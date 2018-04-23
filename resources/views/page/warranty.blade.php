@@ -1,0 +1,2 @@
+Garantie pagina
+{{$pages}}

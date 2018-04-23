@@ -1,0 +1,30 @@
+<div class="col-md-3">
+    <figure class="card card-product">
+        <div class="img-wrap">
+            <img src="images/items/3.jpg">
+            <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+        </div>
+        <figcaption class="info-wrap">
+            @if(true)
+                <span class="badge-new"> NEW </span>
+            @endif
+            @if(true)
+                <span class="badge-offer"><b> - 50%</b></span>
+            @endif
+            <h6 class="title text-dots"><a href="{{route('product.show', ['title-van-product', 1])}}">title van product</a></h6>
+            <div class="action-wrap">
+                <a href="#" class="btn btn-primary btn-sm float-right"> Order </a>
+                <div class="price-wrap h5">
+                    @if(true)
+                        <span class="price-new">$1280</span>
+                    @endif
+                    <del class="price-old">$1980</del>
+                </div> <!-- price-wrap.// -->
+            </div> <!-- action-wrap -->
+        </figcaption>
+    </figure> <!-- card // -->
+</div> <!-- col // -->
+
+@push('css')
+
+@endpush
