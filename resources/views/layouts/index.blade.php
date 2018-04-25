@@ -15,6 +15,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Fonts -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link href="/css/uikit.css" rel="stylesheet" type="text/css"/>
@@ -25,11 +26,6 @@
         body{
             padding-top: 150px !important;
         }
-    </style>
-
-    {{-- navbar --}}
-    <style>
-
     </style>
 
     @stack('css')
@@ -45,9 +41,7 @@
 
     @include('partials.header')
 
-    <div class="container">
-        @yield('content')
-    </div>
+    @yield('content')
 
     @include('partials.footer')
 

@@ -5,25 +5,25 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Service</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Algemene voorwaarden</a></li>
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Privacy Policy</a></li>
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Garantie</a></li>
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>Algemene voorwaarden</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'privacy-en-cookiebeleid'])}}"><i class="fa fa-angle-double-right"></i>Privacy Policy</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>Garantie</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Verzendingen & bestellen</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Verzenden & ontvangen</a></li>
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Retourneren</a></li>
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Bestellen</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>Verzenden & ontvangen</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>Retourneren</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>Bestellen</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Bedrijf</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Contact</a></li>
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Over Ons</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>Contact</a></li>
+                    <li><a href="{{route('page.show', ['klantenservice', 'algemene-voorwaarden'])}}"><i class="fa fa-angle-double-right"></i>Over Ons</a></li>
                 </ul>
             </div>
         </div>

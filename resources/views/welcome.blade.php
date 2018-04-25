@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-    {{--<div class="container">--}}
+    <div class="container">
 
         <!-- Main component for a primary marketing message or call to action -->
         <div class="jumbotron">
@@ -13,5 +13,5 @@
             </p>
         </div>
 
-    {{--</div>--}}
+    </div>
 @endsection
