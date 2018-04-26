@@ -17,6 +17,11 @@ class Category extends Model
         return $this->hasMany('App\Category', 'parent_id')->orderBy('name', 'asc');
     }
 
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
+
     //makes a clean grouped array from the categories
     public static function groupList()
     {

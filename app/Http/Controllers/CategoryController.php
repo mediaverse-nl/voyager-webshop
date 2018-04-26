@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     protected $category;
 
-    public function __construct(Category $category)
+    protected $product;
+
+    public function __construct(Category $category, Product $product)
     {
         $this->category = $category;
+        $this->product = $product;
     }
 
     /**
@@ -32,6 +36,15 @@ class CategoryController extends Controller
      */
     public function show($title, $id)
     {
-        return view('category.show');
+        $categories = $this->category
+            ->get();
+
+        $products = $this->product
+            ->where('category_id', '=', $id)
+            ->get();
+
+        return view('category.show')
+            ->with('category', $categories)
+            ->with('products', $products);
     }
 }

@@ -58,30 +58,12 @@
             <div class="col-lg-9 col-md-8 col-xs-12">
                 <div class="row">
 
-                    {{--@foreach($products as $product)--}}
-                        {{--{!! $product !!}--}}
-                    {{--@endforeach--}}
-
-                    <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['products' => ''])
-                        @endcomponent
-                    </div>
-                    <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['products' => ''])
-                        @endcomponent
-                    </div>
-                    <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['products' => ''])
-                        @endcomponent
-                    </div>
-                    <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['products' => ''])
-                        @endcomponent
-                    </div>
-                    <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['product' => ''])
-                        @endcomponent
-                    </div>
+                    @foreach($products as $product)
+                        <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
+                            @component('components.product-sm-card', ['product' => $product])
+                            @endcomponent
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
