@@ -63,7 +63,7 @@
     </script>
 
     <!-- Scripts -->
-    @stack('script')
+    @stack('js')
 
 </body>
 </html>

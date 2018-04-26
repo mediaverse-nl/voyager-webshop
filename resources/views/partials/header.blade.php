@@ -20,9 +20,9 @@
                 <ul class="largenav float-right" style="">
                     @if (Route::has('login'))
                         @auth
-                            <li class="upper-links dropdown">
-                                <a class="links" href="http://clashhacks.in/">Account</a>
-                                <ul class="dropdown-menu">
+                            <li class="upper-links dropdown ">
+                                <a class="links" href="http://clashhacks.in/">Welkom, {!! Auth::user()->name !!}</a>
+                                <ul class="dropdown-menu-right dropdown-menu" >
                                     <li class="profile-li dropdown-item">
                                         <a class="profile-links" href="">Bestellingen</a>
                                     </li>
@@ -32,14 +32,13 @@
                                     <li class="profile-li dropdown-item">
                                         <a class="profile-links" href="">Profile</a>
                                     </li>
+                                    <li class="profile-li dropdown-item">
+                                        <a class=""  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
                                 </ul>
-                            </li>
-
-                            <li class="upper-links">
-                                <a class="links"  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
                             </li>
                         @else
                             <li class="upper-links">
@@ -102,14 +101,14 @@
         <ul class="nav navbar-nav">
             @foreach($parentCategory as $parent)
                 <li class="">
-                    <a data-toggle="collapse" data-target=".navbar-collapse-{!! $parent->id !!}">{{$parent->name}}</a>
+                    <a data-toggle="collapse" data-target=".navbar-collapse-{!! $parent->id !!}">{{$parent->name}} <i class="fa fa-fw fa-angle-down"></i></a>
                 </li>
                 <li class="navbar-collapse-{!! $parent->id !!} collapse">
                     <ul class="">
                         @foreach($parent->children as $child)
                             <li>
                                 <a href="{{route('category.show', [$child->id, $child->id])}}">
-                                    <i class="fa fa-fw fa-flag"></i>&nbsp; {{$child->name}}
+                                    <i class="fa fa-fw fa-angle-right"></i> &nbsp; {{$child->name}}
                                 </a>
                             </li>
                         @endforeach
@@ -120,7 +119,11 @@
             @if (Route::has('login'))
                 @auth
                     <li class="">
-                        <a data-toggle="collapse" data-target=".navbar-collapse-account">Account - ({!! Auth::user()->name !!})</a>
+                        <a data-toggle="collapse" data-target=".navbar-collapse-account">
+                            <i class="fa fa-fw fa-user-circle"></i>
+                            {!! Auth::user()->name !!}
+                            <i class="fa fa-fw fa-angle-down"></i>
+                        </a>
                     </li>
                     <li class="navbar-collapse-account collapse">
                         <ul class="">
@@ -137,7 +140,10 @@
                     </li>
 
                     <li class="">
-                        <a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-fw fa-sign-out"></i>
+                            Logout
+                        </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
@@ -155,3 +161,5 @@
 
     </div>
 </nav>
+
+

@@ -561,7 +561,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `deleted_at`, `created_at`, `updated_at`, `image`, `price`, `category_id`) VALUES
-(1, 'test-product', 'teest product', NULL, '2018-04-24 21:56:42', '2018-04-24 21:56:42', 'products/April2018/gkY5p4BSnEsHHdOpOjUH.jpg', '66', 0);
+(1, 'test-products', 'teest products', NULL, '2018-04-24 21:56:42', '2018-04-24 21:56:42', 'products/April2018/gkY5p4BSnEsHHdOpOjUH.jpg', '66', 0);
 
 -- --------------------------------------------------------
 

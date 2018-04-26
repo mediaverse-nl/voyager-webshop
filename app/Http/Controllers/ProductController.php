@@ -22,7 +22,9 @@ class ProductController extends Controller
      */
     public function show($title, $id)
     {
-        return view('product.show');
+        $products = $this->product->get();
 
+        return view('product.show')
+            ->with('products', $products);
     }
 }

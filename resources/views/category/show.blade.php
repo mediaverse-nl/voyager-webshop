@@ -57,20 +57,25 @@
             </div>
             <div class="col-lg-9 col-md-8 col-xs-12">
                 <div class="row">
+
+                    {{--@foreach($products as $product)--}}
+                        {{--{!! $product !!}--}}
+                    {{--@endforeach--}}
+
                     <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['product' => ''])
+                        @component('components.product-sm-card', ['products' => ''])
                         @endcomponent
                     </div>
                     <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['product' => ''])
+                        @component('components.product-sm-card', ['products' => ''])
                         @endcomponent
                     </div>
                     <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['product' => ''])
+                        @component('components.product-sm-card', ['products' => ''])
                         @endcomponent
                     </div>
                     <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
-                        @component('components.product-sm-card', ['product' => ''])
+                        @component('components.product-sm-card', ['products' => ''])
                         @endcomponent
                     </div>
                     <div class="col-sm-6 col-lg-4 col-xs-12 col-md-6">
@@ -83,3 +88,21 @@
     </div>
 
 @endsection
+
+@push('js')
+<script>
+    function collapseState() {
+        var lg = window.getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-md');
+        if (window.matchMedia("(min-width: "+lg+")").matches) {
+            $('.filter-content').addClass('show')
+        } else {
+            $('.filter-content').removeClass('show')
+        }
+    }
+
+    collapseState();
+    $(window).on('resize',function(){
+        collapseState()
+    });
+</script>
+@endpush

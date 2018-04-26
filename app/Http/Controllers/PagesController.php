@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Faq;
 use App\Page;
 use Illuminate\Http\Request;
 
@@ -25,15 +26,19 @@ class PagesController extends Controller
         $slug = $slug.(empty($slug2)? null : '/'.$slug2);
 
         $page = $this->pages->findBySlug($slug);
+        $lastSlug = explode('/', $slug);
 
-        switch ($slug){
+        $model = null;
+
+        switch (end($lastSlug)){
                 case 'contact': $template = 'page.contact';
             break;
-                case 'faq': $template = 'page.faq';
+                case 'faq':
+                    $faq = new Faq();
+                    $model = $faq->get();
+                    $template = 'page.faq';
             break;
                 case 'over-ons': $template = 'page.about';
-            break;
-                case 'privacy-en-cookiebeleid': $template = 'page.privacy';
             break;
                 case 'algemene-voorwaarden': $template = 'page.terms';
             break;
@@ -44,6 +49,7 @@ class PagesController extends Controller
         return view($template)
             ->with([
                 'pages' => $page,
+                'model' => $model,
             ]);
     }
 }
