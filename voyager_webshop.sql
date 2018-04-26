@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 25 apr 2018 om 00:19
+-- Gegenereerd op: 26 apr 2018 om 00:43
 -- Serverversie: 5.7.19
 -- PHP-versie: 5.6.31
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `data_rows` (
   `order` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `data_rows_data_type_id_foreign` (`data_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `data_rows`
@@ -139,15 +139,22 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (53, 3, 'role_id', 'text', 'Role', 1, 1, 1, 1, 1, 1, '', 9),
 (54, 7, 'id', 'checkbox', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
 (55, 7, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 2),
-(56, 7, 'description', 'text_area', 'Description', 0, 1, 1, 1, 1, 1, NULL, 3),
-(57, 7, 'deleted_at', 'timestamp', 'Deleted At', 0, 1, 1, 1, 1, 1, NULL, 4),
-(58, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 5),
-(59, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
+(56, 7, 'description', 'text_area', 'Description', 0, 0, 1, 1, 1, 1, NULL, 3),
+(57, 7, 'deleted_at', 'timestamp', 'Deleted At', 0, 0, 0, 0, 0, 0, NULL, 11),
+(58, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 9),
+(59, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 1, 0, 0, 0, NULL, 10),
 (60, 7, 'image', 'image', 'Image', 1, 1, 1, 1, 1, 1, NULL, 7),
-(61, 7, 'price', 'number', 'Price', 1, 1, 1, 1, 1, 1, NULL, 8),
-(62, 7, 'product_hasone_category_relationship', 'relationship', 'categories', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Category\",\"table\":\"categories\",\"type\":\"belongsTo\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\"}', 9),
-(63, 7, 'category_id', 'text', 'Category Id', 1, 1, 1, 1, 1, 1, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 9),
-(64, 4, 'category_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Product\",\"table\":\"products\",\"type\":\"belongsTo\",\"column\":\"id\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"categories\",\"pivot\":\"0\"}', 8);
+(61, 7, 'price', 'number', 'Price', 1, 1, 1, 1, 1, 1, NULL, 4),
+(62, 7, 'product_hasone_category_relationship', 'relationship', 'category', 0, 0, 1, 1, 1, 1, '{\"model\":\"App\\\\Category\",\"table\":\"categories\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\"}', 5),
+(63, 7, 'category_id', 'text', 'Category Id', 1, 0, 0, 0, 0, 0, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 6),
+(64, 4, 'category_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Product\",\"table\":\"products\",\"type\":\"belongsTo\",\"column\":\"id\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"categories\",\"pivot\":\"0\"}', 8),
+(65, 8, 'id', 'checkbox', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(66, 8, 'question', 'text', 'Question', 1, 1, 1, 1, 1, 1, NULL, 2),
+(67, 8, 'description', 'rich_text_box', 'Description', 1, 1, 1, 1, 1, 1, NULL, 3),
+(68, 8, 'faq_category', 'checkbox', 'Faq Category', 1, 1, 1, 1, 1, 0, NULL, 4),
+(69, 8, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 5),
+(70, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
+(71, 7, 'images', 'multiple_images', 'Images', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":null},\"quality\":\"70%\",\"upsize\":false,\"thumbnails\":[{\"name\":\"medium\",\"scale\":\"50%\"},{\"name\":\"small\",\"scale\":\"25%\"},{\"name\":\"cropped\",\"crop\":{\"width\":\"300\",\"height\":\"250\"}}]}', 8);
 
 -- --------------------------------------------------------
 
@@ -174,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `data_types` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `data_types_name_unique` (`name`),
   UNIQUE KEY `data_types_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `data_types`
@@ -187,7 +194,41 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, '2018-04-20 21:32:00', '2018-04-20 21:32:00'),
 (5, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, '2018-04-20 21:32:00', '2018-04-20 21:32:00'),
 (6, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, '', '', 1, 0, '2018-04-20 21:32:00', '2018-04-20 21:32:00'),
-(7, 'products', 'products', 'Product', 'Products', 'voyager-bag', 'App\\Product', NULL, NULL, NULL, 1, 0, '2018-04-21 01:09:28', '2018-04-21 23:59:33');
+(7, 'products', 'products', 'Product', 'Products', 'voyager-bag', 'App\\Product', NULL, '\\App\\Http\\Controllers\\Admin\\ProductController', NULL, 1, 0, '2018-04-21 01:09:28', '2018-04-25 14:21:50'),
+(8, 'faqs', 'faqs', 'Faq', 'Faqs', NULL, 'App\\Faq', NULL, 'Admin\\FaqController', NULL, 1, 1, '2018-04-25 11:35:56', '2018-04-25 12:45:48');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `faqs`
+--
+
+DROP TABLE IF EXISTS `faqs`;
+CREATE TABLE IF NOT EXISTS `faqs` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `question` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `faq_category` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `faqs_question_unique` (`question`),
+  KEY `faqs_faq_category_index` (`faq_category`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `faq_categories`
+--
+
+DROP TABLE IF EXISTS `faq_categories`;
+CREATE TABLE IF NOT EXISTS `faq_categories` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `faq_categories_name_unique` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -235,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `parameters` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `menu_items_menu_id_foreign` (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `menu_items`
@@ -255,7 +296,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (11, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 8, 3, '2018-04-20 21:32:00', '2018-04-21 01:01:44', 'voyager.compass.index', NULL),
 (12, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 10, '2018-04-20 21:32:00', '2018-04-21 01:02:40', 'voyager.settings.index', NULL),
 (13, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 8, 4, '2018-04-20 21:32:02', '2018-04-21 01:01:44', 'voyager.hooks', NULL),
-(15, 1, 'Products', '', '_self', 'voyager-bag', '#000000', NULL, 6, '2018-04-21 01:09:28', '2018-04-21 23:57:55', 'voyager.products.index', 'null');
+(15, 1, 'Products', '', '_self', 'voyager-bag', '#000000', NULL, 6, '2018-04-21 01:09:28', '2018-04-21 23:57:55', 'voyager.products.index', 'null'),
+(16, 1, 'Faqs', '/admin/faqs', '_self', NULL, NULL, NULL, 11, '2018-04-25 11:35:56', '2018-04-25 11:35:56', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -322,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pages_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `pages`
@@ -330,11 +372,15 @@ CREATE TABLE IF NOT EXISTS `pages` (
 
 INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`) VALUES
 (1, 0, 'Hello World', 'Hang the jib grog grog blossom grapple dance the hempen jig gangway pressgang bilge rat to go on account lugger. Nelsons folly gabion line draught scallywag fire ship gaff fluke fathom case shot. Sea Legs bilge rat sloop matey gabion long clothes run a shot across the bow Gold Road cog league.', '<p>Hello World. Scallywag grog swab Cat o\'nine tails scuttle rigging hardtack cable nipper Yellow Jack. Handsomely spirits knave lad killick landlubber or just lubber deadlights chantey pinnace crack Jennys tea cup. Provost long clothes black spot Yellow Jack bilged on her anchor league lateen sail case shot lee tackle.</p>\n<p>Ballast spirits fluke topmast me quarterdeck schooner landlubber or just lubber gabion belaying pin. Pinnace stern galleon starboard warp carouser to go on account dance the hempen jig jolly boat measured fer yer chains. Man-of-war fire in the hole nipperkin handsomely doubloon barkadeer Brethren of the Coast gibbet driver squiffy.</p>', 'pages/page1.jpg', 'hello-world', 'Yar Meta Description', 'Keyword1, Keyword2', 'ACTIVE', '2018-04-20 21:32:01', '2018-04-20 21:32:01'),
-(2, 1, 'contact', 'why', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Bacon ipsum dolor amet flank beef bresaola, pancetta doner ribeye jowl pork rump brisket tenderloin sirloin buffalo ball tip tongue. Tenderloin hamburger ham, short ribs pig turducken spare ribs shankle frankfurter jowl picanha ground round. Picanha pastrami chicken ribeye tri-tip jerky brisket, bacon andouille filet mignon. Boudin tongue t-bone, beef brisket picanha pork belly short ribs sausage jowl pork pastrami. Prosciutto buffalo alcatra kevin ball tip biltong cow swine bacon pork loin shankle. Doner buffalo prosciutto boudin chuck, pork meatball pork belly meatloaf beef ribs ground round salami pork loin.</span></p>', 'pages/April2018/jinmmX3xnbD2QVdZbokv.jpg', 'klantenservice/contact', 'is this really needed', 'ok, ok, ok', 'ACTIVE', '2018-04-21 00:12:37', '2018-04-22 00:07:53'),
+(2, 1, 'contact', 'why', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Bacon ipsum dolor amet flank beef bresaola, pancetta doner ribeye jowl pork rump brisket tenderloin sirloin buffalo ball tip tongue. Tenderloin hamburger ham, short ribs pig turducken spare ribs shankle frankfurter jowl picanha ground round. Picanha pastrami chicken ribeye tri-tip jerky brisket, bacon andouille filet mignon. Boudin tongue t-bone, beef brisket picanha pork belly short ribs sausage jowl pork pastrami. Prosciutto buffalo alcatra kevin ball tip biltong cow swine bacon pork loin shankle. Doner buffalo prosciutto boudin chuck, pork meatball pork belly meatloaf beef ribs ground round salami pork loin.</span></p>', 'pages/April2018/jinmmX3xnbD2QVdZbokv.jpg', 'contact', 'is this really needed', 'ok, ok, ok', 'ACTIVE', '2018-04-21 00:12:37', '2018-04-25 17:14:08'),
 (3, 1, 'faq', 'Pork loin burgdoggen hamburger, drumstick ham corned beef capicola ball tip kevin flank. Turducken kevin pancetta hamburger kielbasa. Venison rump tail bacon corned beef jowl tenderloin ball tip flank pork loin porchetta frankfurter. Filet mignon flank meatloaf, ball tip sirloin tail rump.', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Tail shoulder pork loin tri-tip pork belly ground round shankle venison filet mignon bacon short ribs shank turducken. Cow t-bone tenderloin, beef ribs tongue meatloaf filet mignon landjaeger hamburger frankfurter picanha meatball shoulder beef ball tip. Pork loin doner tongue shankle, meatball tail bacon filet mignon. Biltong short loin alcatra, pig ham hock brisket frankfurter tri-tip picanha turkey pork. Prosciutto picanha pork shankle cow meatloaf chicken swine.</span></p>', NULL, 'klantenservice/faq', 'Tail shoulder pork loin tri-tip pork belly ground round shankle venison filet mignon bacon short ribs shank turducken. Cow t-bone tenderloin, beef ribs tongue meatloaf filet mignon landjaeger hamburger frankfurter picanha meatball shoulder beef ball tip. Pork loin doner tongu Prosciutto picanha pork shankle cow meatloaf chicken swine.', 'opk, ok', 'ACTIVE', '2018-04-22 00:05:33', '2018-04-22 00:05:33'),
-(4, 1, 'over ons', 'Kielbasa shank bacon pastrami, landjaeger meatball sirloin beef tenderloin pork belly shankle boudin pancetta ribeye pig. Hamburger picanha meatball meatloaf. Corned beef chicken porchetta cupim filet mignon flank short loin hambur', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Kielbasa shank bacon pastrami, landjaeger meatball sirloin beef tenderloin pork belly shankle boudin pancetta ribeye pig. Hamburger picanha meatball meatloaf. Corned beef chicken porchetta cupim filet mignon flank short loin hamburger frankfurter prosciutto pork turducken fatback tongue. Pork belly tenderloin short ribs jerky pork loin. Strip steak capicola burgdoggen shank, t-bone tongue corned beef. Salami short loin picanha beef venison hamburger, landjaeger pastrami spare ribs biltong pork loin kevin ribeye. Turkey rump bresaola buffalo porchetta.</span></p>', NULL, 'klantenservice/over-ons', 'ok ok', 'ok ok', 'ACTIVE', '2018-04-22 00:06:40', '2018-04-22 00:06:40'),
+(4, 1, 'over ons', 'Kielbasa shank bacon pastrami, landjaeger meatball sirloin beef tenderloin pork belly shankle boudin pancetta ribeye pig. Hamburger picanha meatball meatloaf. Corned beef chicken porchetta cupim filet mignon flank short loin hambur', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Kielbasa shank bacon pastrami, landjaeger meatball sirloin beef tenderloin pork belly shankle boudin pancetta ribeye pig. Hamburger picanha meatball meatloaf. Corned beef chicken porchetta cupim filet mignon flank short loin hamburger frankfurter prosciutto pork turducken fatback tongue. Pork belly tenderloin short ribs jerky pork loin. Strip steak capicola burgdoggen shank, t-bone tongue corned beef. Salami short loin picanha beef venison hamburger, landjaeger pastrami spare ribs biltong pork loin kevin ribeye. Turkey rump bresaola buffalo porchetta.</span></p>', NULL, 'over-ons', 'ok ok', 'ok ok', 'ACTIVE', '2018-04-22 00:06:40', '2018-04-25 17:14:47'),
 (5, 1, 'privacy en cookiebeleid', 'Bacon ipsum dolor amet turkey cow shankle pork loin chuck pig andouille chicken flank. Alcatra andouille t-bone bacon, sausage sirloin kevin. Leberkas pork pancetta, fatback pastrami tenderloin shoulder sirloin jerky bresaola alcatra cupim boudin. Strip steak filet mignon ribeye chicken pork belly brisket capicola tongue sirloin pork chop pork ham t-bone.', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Bacon ipsum dolor amet turkey cow shankle pork loin chuck pig andouille chicken flank. Alcatra andouille t-bone bacon, sausage sirloin kevin. Leberkas pork pancetta, fatback pastrami tenderloin shoulder sirloin jerky bresaola alcatra cupim boudin. Strip steak filet mignon ribeye chicken pork belly brisket capicola tongue sirloin pork chop pork ham t-bone.</span><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Bacon ipsum dolor amet turkey cow shankle pork loin chuck pig andouille chicken flank. Alcatra andouille t-bone bacon, sausage sirloin kevin. Leberkas pork pancetta, fatback pastrami tenderloin shoulder sirloin jerky bresaola alcatra cupim boudin. Strip steak filet mignon ribeye chicken pork belly brisket capicola tongue sirloin pork chop pork ham t-bone.</span><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Bacon ipsum dolor amet turkey cow shankle pork loin chuck pig andouille chicken flank. Alcatra andouille t-bone bacon, sausage sirloin kevin. Leberkas pork pancetta, fatback pastrami tenderloin shoulder sirloin jerky bresaola alcatra cupim boudin. Strip steak filet mignon ribeye chicken pork belly brisket capicola tongue sirloin pork chop pork ham t-bone.</span></p>', NULL, 'klantenservice/privacy-en-cookiebeleid', 'privacy-en-cookiebeleid', 'privacy-en-cookiebeleid', 'ACTIVE', '2018-04-22 00:07:32', '2018-04-22 00:07:32'),
-(6, 1, 'algemene voorwaarden', 'Tail cupim ex capicola brisket cillum tempor ham hock elit fugiat in labore. Alcatra est incididunt chuck, eiusmod aute et pastrami tri-tip veniam. T-bone dolore tenderloin andouille bacon incididunt pork loin id. Ribeye jowl shankle voluptate dolore turducken quis boudin. Ad elit pork pastrami laborum filet mignon, sausage ullamco porchetta eiusmod capicola beef ribs picanha. Salami ball tip beef ribs leberkas bacon, chicken kevin duis mollit.', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Tail cupim ex capicola brisket cillum tempor ham hock elit fugiat in labore. Alcatra est incididunt chuck, eiusmod aute et pastrami tri-tip veniam. T-bone dolore tenderloin andouille bacon incididunt pork loin id. Ribeye jowl shankle voluptate dolore turducken quis boudin. Ad elit pork pastrami laborum filet mignon, sausage ullamco porchetta eiusmod capicola beef ribs picanha. Salami ball tip beef ribs leberkas bacon, chicken kevin duis mollit.</span><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Tail cupim ex capicola brisket cillum tempor ham hock elit fugiat in labore. Alcatra est incididunt chuck, eiusmod aute et pastrami tri-tip veniam. T-bone dolore tenderloin andouille bacon incididunt pork loin id. Ribeye jowl shankle voluptate dolore turducken quis boudin. Ad elit pork pastrami laborum filet mignon, sausage ullamco porchetta eiusmod capicola beef ribs picanha. Salami ball tip beef ribs leberkas bacon, chicken kevin duis mollit.</span></p>', NULL, 'klantenservice/algemene-voorwaarden', 'algemene-voorwaarden', 'algemene-voorwaarden', 'ACTIVE', '2018-04-22 00:08:46', '2018-04-22 00:08:46');
+(6, 1, 'algemene voorwaarden', 'Tail cupim ex capicola brisket cillum tempor ham hock elit fugiat in labore. Alcatra est incididunt chuck, eiusmod aute et pastrami tri-tip veniam. T-bone dolore tenderloin andouille bacon incididunt pork loin id. Ribeye jowl shankle voluptate dolore turducken quis boudin. Ad elit pork pastrami laborum filet mignon, sausage ullamco porchetta eiusmod capicola beef ribs picanha. Salami ball tip beef ribs leberkas bacon, chicken kevin duis mollit.', '<p><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Tail cupim ex capicola brisket cillum tempor ham hock elit fugiat in labore. Alcatra est incididunt chuck, eiusmod aute et pastrami tri-tip veniam. T-bone dolore tenderloin andouille bacon incididunt pork loin id. Ribeye jowl shankle voluptate dolore turducken quis boudin. Ad elit pork pastrami laborum filet mignon, sausage ullamco porchetta eiusmod capicola beef ribs picanha. Salami ball tip beef ribs leberkas bacon, chicken kevin duis mollit.</span><span style=\"color: #333333; font-family: Georgia, \'Bitstream Charter\', serif; font-size: 16px;\">Tail cupim ex capicola brisket cillum tempor ham hock elit fugiat in labore. Alcatra est incididunt chuck, eiusmod aute et pastrami tri-tip veniam. T-bone dolore tenderloin andouille bacon incididunt pork loin id. Ribeye jowl shankle voluptate dolore turducken quis boudin. Ad elit pork pastrami laborum filet mignon, sausage ullamco porchetta eiusmod capicola beef ribs picanha. Salami ball tip beef ribs leberkas bacon, chicken kevin duis mollit.</span></p>', NULL, 'klantenservice/algemene-voorwaarden', 'algemene-voorwaarden', 'algemene-voorwaarden', 'ACTIVE', '2018-04-22 00:08:46', '2018-04-22 00:08:46'),
+(7, 1, 'verzenden & ontvangen', 'test', '<p>test</p>', NULL, 'klantenservice/verzenden-ontvangen', 'test', 'test', 'ACTIVE', '2018-04-25 17:17:27', '2018-04-25 17:26:21'),
+(8, 1, 'garantie', 'test', '<p>test</p>', NULL, 'klantenservice/garantie', 'test', 'test', 'ACTIVE', '2018-04-25 17:20:43', '2018-04-25 17:20:43'),
+(9, 1, 'retourneren', 'retourneren', '<p>retourneren</p>', NULL, 'klantenservice/retourneren', 'test', 'test', 'ACTIVE', '2018-04-25 17:26:58', '2018-04-25 17:26:58'),
+(10, 1, 'bestellen', 'bestellen', '<p>bestellen</p>', NULL, 'klantenservice/bestellen', 'bestellen', 'bestellen', 'ACTIVE', '2018-04-25 17:27:34', '2018-04-25 17:27:34');
 
 -- --------------------------------------------------------
 
@@ -366,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `permission_group_id` int(10) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `permissions_key_index` (`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `permissions`
@@ -417,7 +463,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (42, 'read_products', 'products', '2018-04-21 01:09:28', '2018-04-21 01:09:28', NULL),
 (43, 'edit_products', 'products', '2018-04-21 01:09:28', '2018-04-21 01:09:28', NULL),
 (44, 'add_products', 'products', '2018-04-21 01:09:28', '2018-04-21 01:09:28', NULL),
-(45, 'delete_products', 'products', '2018-04-21 01:09:28', '2018-04-21 01:09:28', NULL);
+(45, 'delete_products', 'products', '2018-04-21 01:09:28', '2018-04-21 01:09:28', NULL),
+(46, 'browse_faqs', 'faqs', '2018-04-25 11:35:56', '2018-04-25 11:35:56', NULL),
+(47, 'read_faqs', 'faqs', '2018-04-25 11:35:56', '2018-04-25 11:35:56', NULL),
+(48, 'edit_faqs', 'faqs', '2018-04-25 11:35:56', '2018-04-25 11:35:56', NULL),
+(49, 'add_faqs', 'faqs', '2018-04-25 11:35:56', '2018-04-25 11:35:56', NULL),
+(50, 'delete_faqs', 'faqs', '2018-04-25 11:35:56', '2018-04-25 11:35:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -496,7 +547,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (42, 1),
 (43, 1),
 (44, 1),
-(45, 1);
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1);
 
 -- --------------------------------------------------------
 
@@ -550,8 +606,9 @@ CREATE TABLE IF NOT EXISTS `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `price` decimal(10,0) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `category_id` int(11) NOT NULL,
+  `images` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `products_category_id_index` (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -560,8 +617,8 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- Gegevens worden geëxporteerd voor tabel `products`
 --
 
-INSERT INTO `products` (`id`, `title`, `description`, `deleted_at`, `created_at`, `updated_at`, `image`, `price`, `category_id`) VALUES
-(1, 'test-products', 'teest products', NULL, '2018-04-24 21:56:42', '2018-04-24 21:56:42', 'products/April2018/gkY5p4BSnEsHHdOpOjUH.jpg', '66', 0);
+INSERT INTO `products` (`id`, `title`, `description`, `deleted_at`, `created_at`, `updated_at`, `image`, `price`, `category_id`, `images`) VALUES
+(1, 'test-product', 'teest product', NULL, '2018-04-24 21:56:00', '2018-04-25 16:11:54', 'products/April2018/RamksC39okSZGUAuJlpe.jpg', '67.00', 0, '[\"products\\/April2018\\/kHjrD9ysw2gaRHoOI2gU.png\",\"products\\/April2018\\/asL9myYVPwAh47RTH8WT.png\"]');
 
 -- --------------------------------------------------------
 
@@ -606,7 +663,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `group` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `settings_key_unique` (`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `settings`
@@ -622,7 +679,13 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (7, 'admin.description', 'Admin Description', 'Welcome to Voyager. The Missing Admin for Laravel', '', 'text', 2, 'Admin'),
 (8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
 (9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
-(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '', '', 'text', 1, 'Admin');
+(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '', '', 'text', 1, 'Admin'),
+(11, 'social-media.social_media_facebook', 'Facebook', 'test', NULL, 'text', 6, 'social media'),
+(12, 'social-media.social_media_linkedin', 'LinkedIn', '', NULL, 'text', 7, 'social media'),
+(13, 'social-media.social_media_twitter', 'Twitter', '', NULL, 'text', 8, 'social media'),
+(14, 'social-media.social_media_google', 'Google+', '', NULL, 'text', 9, 'social media'),
+(15, 'social-media.social_media_instagram', 'Instagram', '', NULL, 'text', 10, 'social media'),
+(16, 'social-media.social_media_email', 'Email', '', NULL, 'text', 11, 'social media');
 
 -- --------------------------------------------------------
 
@@ -706,7 +769,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$uon0xUuUMw7DtXeUeI5qIe6Gs5hkRXh1jQjIDf2tLNQOfyMxxKH1u', 'dXaOLtKLbXJ4kxxZp6lWVwrGfgTPRNGXx1OWJU8MVJwMmePxMPoteiL2tNa0', '2018-04-20 21:32:01', '2018-04-20 21:32:01');
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '$2y$10$uon0xUuUMw7DtXeUeI5qIe6Gs5hkRXh1jQjIDf2tLNQOfyMxxKH1u', 'vpsneEVjS0J1pCjnVG0XSh5KXc4CEUGZ93RTymyGapWQ7LgYDJ5kxBC73tIS', '2018-04-20 21:32:01', '2018-04-20 21:32:01');
 
 --
 -- Beperkingen voor geëxporteerde tabellen
