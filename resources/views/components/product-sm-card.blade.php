@@ -1,7 +1,7 @@
 
 <figure class="card card-product">
     <div class="img-wrap">
-        <img src="images/items/3.jpg">
+        <img src="{{ asset('/storage/'.$product->image) }}">
         <a class="btn-overlay" href="{{route('product.show', [str_replace(' ', '-', $product->title), $product->id])}}">
             <i class="fa fa-search-plus"></i> Quick view
         </a>
@@ -18,10 +18,10 @@
             <a href="{{route('product.show', [str_replace(' ', '-', $product->title), $product->id])}}" class="btn btn-primary btn-sm float-right"> Order </a>
             <div class="price-wrap h5">
                 @if($product->checkIfDiscount())
-                    <span class="price-new">{{$product->discountedPrice()}}</span>
-                    <del class="price-old">{!! $product->price() !!}</del>
+                    <span class="price-new">€{{$product->discountedPrice()}}</span>
+                    <del class="price-old">€{!! $product->price() !!}</del>
                 @else
-                    <span class="price">{!! $product->price() !!}</span>
+                    <span class="price">€{!! $product->price() !!}</span>
                 @endif
             </div> <!-- price-wrap.// -->
         </div> <!-- action-wrap -->

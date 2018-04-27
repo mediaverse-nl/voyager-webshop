@@ -27,7 +27,7 @@ class Product extends Model
 
     public function checkIfDiscount()
     {
-        if ($this->discount !== null ||0.00) {
+        if ($this->discount != 0.00) {
             return true;
         }
         return false;
@@ -41,10 +41,8 @@ class Product extends Model
     public function discountPercentage()
     {
         if ($this->checkIfDiscount()) {
-            $oldFigure = $this->price();
-            $newFigure = $this->discountedPrice();
-            $percentChange = ($oldFigure / 100 ) * $newFigure;
-            return $percentChange;
+            $percentChange =  ($this->discountedPrice() - $this->price()) / $this->price() * 100;
+            return number_format($percentChange);
         }
     }
 

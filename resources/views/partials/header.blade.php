@@ -21,7 +21,7 @@
                     @if (Route::has('login'))
                         @auth
                             <li class="upper-links dropdown ">
-                                <a class="links" href="http://clashhacks.in/">Welkom, {!! Auth::user()->name !!}</a>
+                                <a class="links" href="#">Welkom, {!! Auth::user()->name !!}</a>
                                 <ul class="dropdown-menu-right dropdown-menu" >
                                     <li class="profile-li dropdown-item">
                                         <a class="profile-links" href="">Bestellingen</a>
@@ -52,6 +52,12 @@
 
                 </ul>
             </div>
+
+        </div>
+    </div>
+    <div id="flipkart-navbar">
+        <div class="container">
+
             <div class="row row2">
                 <div class="col-8 col-sm-6 col-md-3 col-lg-3" style="padding: 0px 15px;">
                     <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">&#x2630; Brand2</span></h2>

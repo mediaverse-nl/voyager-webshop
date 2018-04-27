@@ -5,37 +5,38 @@
     <div class="container">
         <div class="card">
 
-            {{$product}}
-
             <div class="row no-gutters">
                 <aside class="col-sm-5 border-right">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href="images/items/1.jpg" data-fancybox=""><img src="images/items/1.jpg"></a></div>
+                            <div>
+                                <a href="{{ asset('/storage/'.$product->image) }}" data-fancybox="group" data-thumb>
+                                    <img src="{{ asset('/storage/'.$product->image) }}" rel="test" alt="{!! $product->title !!}">
+                                </a>
+                            </div>
                         </div> <!-- sliproductsduct.// -->
                         <div class="img-small-wrap">
-                            <div class="item-gallery"> <img src="images/items/1.jpg"></div>
-                            <div class="item-gallery"> <img src="images/items/2.jpg"></div>
-                            <div class="item-gallery"> <img src="images/items/3.jpg"></div>
-                            <div class="item-gallery"> <img src="images/items/4.jpg"></div>
+                            @foreach(json_decode($product->images) as $image)
+                                <a class="item-gallery" href="{{ asset('/storage/'.$image) }}" data-fancybox="group" data-thumb>
+                                    <img src="{!! Voyager::image($image) !!}" >
+                                </a>
+                            @endforeach
                         </div> <!-- slider-nav.// -->
                     </article> <!-- gallery-wrap .end// -->
                 </aside>
                 <aside class="col-sm-7">
                     <article class="p-5">
-                        <h3 class="title mb-3">Original Version of Some product name</h3>
+                        <h3 class="title mb-3">{!! $product->title !!}</h3>
 
                         <div class="price-detail-wrap">
                             <var class="price h3 text-warning">
-                                <span class="currency">US $</span><span class="num">1299</span>
+                                <span class="currency"></span>€<span class="num">{!! $product->price() !!}</span>
                             </var>
-                            <span>/per kg</span>
+                            {{--<span>/per kg</span>--}}
                         </div> <!-- price-detail-wrap .// -->
                         <dl>
                             <dt>Description</dt>
-                            <dd><p>Here goes description consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco </p></dd>
+                            <dd>{!! $product->description !!}</dd>
                         </dl>
                         <dl class="row">
                             <dt class="col-sm-3">Model#</dt>
@@ -108,3 +109,20 @@
     </div> <!-- card.// -->
 
 @endsection
+
+@push('css')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" type="text/css" rel="stylesheet">
+    <style>
+        .fancybox-slide > *{max-width:80%;}
+    </style>
+@endpush
+@push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fancybox").fancybox({
+                'cyclic'    :   true
+            });
+        });
+    </script>
+@endpush
