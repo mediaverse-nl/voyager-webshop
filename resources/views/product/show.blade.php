@@ -4,6 +4,9 @@
 
     <div class="container">
         <div class="card">
+
+            {{$product}}
+
             <div class="row no-gutters">
                 <aside class="col-sm-5 border-right">
                     <article class="gallery-wrap">

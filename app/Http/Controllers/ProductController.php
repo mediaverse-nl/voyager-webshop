@@ -22,9 +22,14 @@ class ProductController extends Controller
      */
     public function show($title, $id)
     {
-        $products = $this->product->get();
+        $product = $this->product->findOrFail($id);
+
+        if (str_replace(' ', '-', $product->title) !== $title){
+            return redirect()
+                ->route('product.show', [$product->title, $product->id]);
+        }
 
         return view('product.show')
-            ->with('products', $products);
+            ->with('product', $product);
     }
 }
