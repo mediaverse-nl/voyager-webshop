@@ -3,33 +3,38 @@
 @section('content')
 
     <div class="container">
+
+        {{ Breadcrumbs::render('category.show', $category) }}
+
         <div class="row">
             <div class="col-lg-3 col-md-4 col-xs-12">
 
                 <div class="card" style="margin-bottom: 20px;">
+
                     <article class="card-group-item">
                         <header class="card-header">
-                            <a href="#" data-toggle="collapse" data-target="#collapse33" aria-expanded="false" class="collapsed">
+                            <a href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" class="collapsed">
                                 <i class="icon-action fa fa-chevron-down"></i>
-                                <h6 class="title">Another title </h6>
+                                <h6 class="title">Categorieen </h6>
                             </a>
                         </header>
-                        <div class="filter-content collapse" id="collapse33" style="">
+                        <div class="filter-content collapse" id="collapse6" style="">
                             <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <span class="float-right badge badge-light round">52</span>
-                                    <input type="checkbox" class="custom-control-input" id="Check1">
-                                    <label class="custom-control-label" for="Check1">Samsung</label>
-                                </div> <!-- form-check.// -->
-
-                                <div class="custom-control custom-checkbox">
-                                    <span class="float-right badge badge-light round">132</span>
-                                    <input type="checkbox" class="custom-control-input" id="Check2">
-                                    <label class="custom-control-label" for="Check2">Black berry</label>
-                                </div> <!-- form-check.// -->
+                                <ul class="list-default list-lg">
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href="{!! $category->route() !!}">
+                                                {!! $category->name !!}
+                                                <span class="float-right badge badge-light round">
+                                                {!! $category->product !!}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div> <!-- card-body.// -->
                         </div>
                     </article> <!-- card-group-item.// -->
+
                     <article class="card-group-item">
                         <header class="card-header">
                             <a href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" class="collapsed">
@@ -53,6 +58,31 @@
                             </div>
                         </div> <!-- card-body.// -->
                     </article> <!-- card-group-item.// -->
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <a href="#" data-toggle="collapse" data-target="#collapse33" aria-expanded="false" class="collapsed">
+                                <i class="icon-action fa fa-chevron-down"></i>
+                                <h6 class="title">Another title </h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse" id="collapse33" style="">
+                            <div class="card-body">
+                                <div class="custom-control custom-checkbox">
+                                    <span class="float-right badge badge-light round">52</span>
+                                    <input type="checkbox" class="custom-control-input" id="Check1">
+                                    <label class="custom-control-label" for="Check1">Samsung</label>
+                                </div> <!-- form-check.// -->
+
+                                <div class="custom-control custom-checkbox">
+                                    <span class="float-right badge badge-light round">132</span>
+                                    <input type="checkbox" class="custom-control-input" id="Check2">
+                                    <label class="custom-control-label" for="Check2">Black berry</label>
+                                </div> <!-- form-check.// -->
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- card-group-item.// -->
+
                 </div> <!-- card.// -->
             </div>
             <div class="col-lg-9 col-md-8 col-xs-12">

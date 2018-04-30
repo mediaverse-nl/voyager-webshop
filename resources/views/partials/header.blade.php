@@ -9,7 +9,7 @@
                             <ul class="dropdown-menu">
                                 @foreach($parent->children as $child)
                                     <li class="profile-li dropdown-item">
-                                        <a class="profile-links" href="{{route('category.show', [$child->id, $child->id])}}">{{$child->name}}</a>
+                                        <a class="profile-links" href="{{route('category.show', [str_replace(' ', '=', $child->name), $child->id])}}">{{$child->name}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -60,8 +60,15 @@
 
             <div class="row row2">
                 <div class="col-8 col-sm-6 col-md-3 col-lg-3" style="padding: 0px 15px;">
-                    <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">&#x2630; Brand2</span></h2>
-                    <h1 style="margin:0px;"><a class="links" href="{{route('home')}}"><span class="largenav">Brand</span></a></h1>
+                    <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">&#x2630;
+                            <img src="/storage/{!! setting('site.logo') !!}" class="img-fluid" style="height: 50px !important; margin-top: -25px; margin-bottom: -10px; "></span></h2>
+                    <h1 style="margin:0px;">
+                        <a class="links" href="{{route('home')}}">
+                            <span class="largenav">
+                                <img src="/storage/{!! setting('site.logo') !!}" class="img-fluid" style="height: 70px !important; margin-top: -25px; margin-bottom: -10px; ">
+                            </span>
+                        </a>
+                    </h1>
                 </div>
 
                 <div class="smallnav col-4 col-sm-6" style="padding: 0px 15px;">
@@ -113,7 +120,7 @@
                     <ul class="">
                         @foreach($parent->children as $child)
                             <li>
-                                <a href="{{route('category.show', [$child->id, $child->id])}}">
+                                <a href="{{route('category.show', [str_replace(' ', '=', $child->name), $child->id])}}">
                                     <i class="fa fa-fw fa-angle-right"></i> &nbsp; {{$child->name}}
                                 </a>
                             </li>

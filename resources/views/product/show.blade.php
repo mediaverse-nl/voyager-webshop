@@ -3,7 +3,10 @@
 @section('content')
 
     <div class="container">
-        <div class="card">
+
+        {{ Breadcrumbs::render('product.show', $product) }}
+
+        <div class="card col-12">
 
             <div class="row no-gutters">
                 <aside class="col-sm-5 border-right">
@@ -11,7 +14,7 @@
                         <div class="img-big-wrap">
                             <div>
                                 <a href="{{ asset('/storage/'.$product->image) }}" data-fancybox="group" data-thumb>
-                                    <img src="{{ asset('/storage/'.$product->image) }}" rel="test" alt="{!! $product->title !!}">
+                                    <img src="{{ asset('/storage/'.$product->image) }}" rel="test" class="img-fluid" alt="{!! $product->title !!}">
                                 </a>
                             </div>
                         </div> <!-- sliproductsduct.// -->
@@ -51,7 +54,7 @@
                         <div class="rating-wrap">
 
                             <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
+                                <li style="width:90%" class="stars-active">
                                     <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -108,12 +111,80 @@
         </div> <!-- card.// -->
     </div> <!-- card.// -->
 
+    <br>
+
+    <section class="section-name bg-white padding-y">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb15">
+                    <article class="box h-100">
+                        <figure class="itembox text-center">
+                            <span class="mt-2 icon-wrap rounded icon-sm bg-success">
+                                <i class="fa fa-box white"></i>
+                            </span>
+                            <figcaption class="text-wrap">
+                                <h5 class="title">gratis bezorging</h5>
+                                <p class="text-muted">vanaf 20.-</p>
+                            </figcaption>
+                        </figure> <!-- iconbox // -->
+                    </article> <!-- panel-lg.// -->
+                </div><!-- col // -->
+                <div class="col-md-4 mb15">
+                    <article class="box h-100">
+                        <figure class="itembox text-center">
+                            <span class="mt-2 icon-wrap rounded icon-sm bg-warning">
+                                <i class="fa fa-truck white"></i>
+                            </span>
+                            <figcaption class="text-wrap">
+                                <h5 class="title">voor 23:59 uur besteld</h5>
+                                <p class="text-muted">morgen in huis*</p>
+                            </figcaption>
+                        </figure> <!-- iconbox // -->
+                    </article> <!-- panel-lg.// -->
+                </div> <!-- col // -->
+                <div class="col-md-4 mb15">
+                    <article class="box h-100">
+                        <figure class="itembox text-center">
+                            <span class="mt-2 icon-wrap rounded icon-sm bg-primary">
+                                <i class="fa fa-whatsapp white"></i>
+                            </span>
+                            <figcaption class="text-wrap">
+                                <h5 class="title">wij helpen je graag</h5>
+                                <p class="text-muted">via Facebook, Twitter, e-mail of telefonisch via: 038 - 845 45 45</p>
+                            </figcaption>
+                        </figure> <!-- iconbox // -->
+                    </article> <!-- panel-lg.// -->
+                </div> <!-- col // -->
+            </div> <!-- row.// -->
+
+        </div><!-- container // -->
+    </section>
+
+    <section class="section-name bg padding-y">
+        <div class="container">
+            <h4>Another section if needed</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div><!-- container // -->
+    </section>
+
 @endsection
 
 @push('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" type="text/css" rel="stylesheet">
     <style>
         .fancybox-slide > *{max-width:80%;}
+        .img-fluid{
+            height: auto !important;
+        }
+        .img-big-wrap{
+            margin-top: 15px;
+            margin-right: 15px;
+        }
     </style>
 @endpush
 @push('js')

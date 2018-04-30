@@ -23,9 +23,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($title, $id)
     {
+        $category = $this->category
+            ->findOrFail($id);
 
+        $categories = $category->children;
+
+        return view('category.index')
+            ->with('category', $category)
+            ->with('categories', $categories);
     }
 
     /**
@@ -36,15 +43,29 @@ class CategoryController extends Controller
      */
     public function show($title, $id)
     {
-        $categories = $this->category
-            ->get();
+        $category = $this->category
+            ->findOrFail($id);
 
-        $products = $this->product
-            ->where('category_id', '=', $id)
-            ->get();
+        if ($category->parent()->exists())
+        {
 
-        return view('category.show')
-            ->with('category', $categories)
-            ->with('products', $products);
+            if (str_replace(' ', '-', $category->name) !== $title){
+                return redirect()
+                    ->route('category.show', [str_replace('-',' ', $category->name), $category->id]);
+            }
+
+            $categories = $category->parent->children;
+
+            $products = $this->product
+                ->where('category_id', '=', $id)
+                ->get();
+
+            return view('category.show')
+                ->with('category', $category)
+                ->with('categories', $categories)
+                ->with('products', $products);
+        }
+
+        return $this->index($title, $id);
     }
 }

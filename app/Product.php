@@ -55,8 +55,13 @@ class Product extends Model
     {
         return number_format($this->discount, 2);
     }
-//    public function categoryId()
-//    {
-//        return $this->belongsTo('App\Category', 'category_id')->where('parent_id', '=', null);
-//    }
+
+    public function category(){
+        return $this->belongsTo('App\Category', 'category_id');
+    }
+
+    public function categoryId()
+    {
+        return $this->belongsTo('App\Category', 'category_id')->where('parent_id', '=', null);
+    }
 }

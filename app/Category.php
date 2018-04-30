@@ -22,6 +22,11 @@ class Category extends Model
         return $this->belongsTo('App\Product');
     }
 
+    public function route()
+    {
+        return route('category.show', [str_replace(' ', '-', $this->name), $this->id]);
+    }
+
     //makes a clean grouped array from the categories
     public static function groupList()
     {

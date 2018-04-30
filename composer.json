@@ -11,10 +11,11 @@
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "gloudemans/shoppingcart": "^2.5",
+        "davejamesmiller/laravel-breadcrumbs": "^4.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "mollie/laravel-mollie": "^1.5",
-        "tcg/voyager": "^1.0"
+        "tcg/voyager": "v1.0.17"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
