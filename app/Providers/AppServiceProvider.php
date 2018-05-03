@@ -17,13 +17,17 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $parent = Category::where('parent_id', NULL)
-            ->where('status', '=', 'ACTIVE')
-            ->orderBy('name', 'ASC')
-            ->get();
+        if (Schema::hasTable('table_name')) {
+            $parent = Category::where('parent_id', NULL)
+                ->where('status', '=', 1)
+                ->orderBy('name', 'ASC')
+                ->get();
+        }else{
+            $parent = [];
+        }
 
         view()->share('parentCategory', $parent);
-//        view()->share('partials.header', $parent);
+
     }
 
     /**

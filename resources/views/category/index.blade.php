@@ -11,7 +11,7 @@
                 <div class="col-md-3">
                     <figure class="card card-sm card-product">
                         <div class="img-wrap">
-                            <img src="images/items/6.jpg">
+                            <img src="{{ asset('/storage/'.$category->thumbnail) }}">
                         </div>
                         <figcaption class="info-wrap text-center">
                             <h6 class="title text-truncate">
